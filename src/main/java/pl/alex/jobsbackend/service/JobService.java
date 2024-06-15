@@ -25,4 +25,9 @@ public class JobService {
     Pageable pageable = PageRequest.of(0, limit);
     return jobRepository.findAll(pageable).stream().map(Job::toDto).collect(Collectors.toList());
   }
+
+  public JobDto saveJob(JobDto jobDto) {
+    Job saved = jobRepository.save(Job.toEntity(jobDto));
+    return Job.toDto(saved);
+  }
 }

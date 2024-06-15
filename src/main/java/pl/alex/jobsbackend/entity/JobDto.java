@@ -9,6 +9,6 @@ public record JobDto(String id,
                      String description,
                      String location,
                      String salary,
-                     CompanyDto companyDto) {
+                     CompanyDto company) {
 
 }

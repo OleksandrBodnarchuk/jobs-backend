@@ -37,7 +37,7 @@ public class Job {
        .description(job.description)
        .location(job.location)
        .salary(job.salary)
-       .companyDto(Company.toDto(job.company))
+       .company(Company.toDto(job.company))
        .build();
  }
 

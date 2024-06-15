@@ -30,4 +30,8 @@ public class JobService {
     Job saved = jobRepository.save(Job.toEntity(jobDto));
     return Job.toDto(saved);
   }
+
+  public void deleteJobById(long id) {
+    jobRepository.deleteById(id);
+  }
 }

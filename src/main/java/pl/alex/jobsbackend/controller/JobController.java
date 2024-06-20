@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,6 +44,12 @@ public class JobController {
   public ResponseEntity<JobDto> saveJob(@RequestBody JobDto jobDto) {
     log.info("Saving job: {}", jobDto.toString());
     return ResponseEntity.ok(jobService.saveJob(jobDto));
+  }
+
+  @PutMapping("/update/{id}")
+  public ResponseEntity<JobDto> saveJob(@RequestBody JobDto jobDto, @PathVariable long id) {
+    log.info("Updating job: {}", jobDto.toString());
+    return ResponseEntity.ok(jobService.updateJob(jobDto, id));
   }
 
   @DeleteMapping("/{id}")

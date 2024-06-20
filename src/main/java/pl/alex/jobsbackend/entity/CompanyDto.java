@@ -2,7 +2,7 @@ package pl.alex.jobsbackend.entity;
 
 import lombok.Builder;
 
-@Builder
+@Builder(toBuilder = true)
 public record CompanyDto(String id,
                          String name,
                          String description,

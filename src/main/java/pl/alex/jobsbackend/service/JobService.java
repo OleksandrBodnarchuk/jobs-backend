@@ -34,4 +34,26 @@ public class JobService {
   public void deleteJobById(long id) {
     jobRepository.deleteById(id);
   }
+
+  public JobDto updateJob(JobDto jobDto, long id) {
+    Job updatedJob = jobRepository.findById(id)
+        .map(job -> updateJob(job, jobDto))
+        .orElseThrow(() -> new RuntimeException("Job not found"));
+    return Job.toDto(jobRepository.save(updatedJob));
+  }
+
+  private Job updateJob(Job job, JobDto jobDto) {
+    return job.toBuilder()
+        .title(jobDto.title())
+        .description(jobDto.description())
+        .type(jobDto.type())
+        .location(jobDto.location())
+        .company(job.getCompany().toBuilder()
+            .name(jobDto.company().name())
+            .description(jobDto.company().description())
+            .contactEmail(jobDto.company().contactEmail())
+            .contactPhone(jobDto.company().contactPhone())
+            .build())
+        .build();
+  }
 }

@@ -2,7 +2,7 @@ package pl.alex.jobsbackend.entity;
 
 import lombok.Builder;
 
-@Builder
+@Builder(toBuilder = true)
 public record JobDto(String id,
                      String title,
                      String type,
